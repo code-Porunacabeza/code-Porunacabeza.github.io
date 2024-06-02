@@ -3,7 +3,7 @@
     
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>GVSL</title>
+  <title>GAZER</title>
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
       <div class="row">
           <h1 class="col-md-12 text-center">
               <!-- <img src="./index_files/images/name.png" class="img-responsive" alt="overview"><br> -->
-              <strong style="color:rgb(204,0,0);">GAZER</strong> : Model-active human-centered artificial intelligence for medical visual assistance
+              <strong >GAZER</strong> : Model-active human-centered artificial intelligence for medical visual assistance
           <br /><br />
           <!-- <small><strong style="color:rgb(204,0,0);">
               [Accepted by CVPR 2023]
@@ -94,7 +94,7 @@
               </h3>
               <img src="./index_files/images/overreview_page-0001.jpg" class="img-responsive" alt="overview"><br>
               <p class="text-justify">
-                  Learning inter-image similarity is crucial for 3D medical images self-supervised pre-training, due to their sharing of numerous same semantic regions. However, the lack of the semantic prior in metrics and the semantic-independent variation in 3D medical images make it challenging to get a reliable measurement for the inter-image similarity, hindering the learning of consistent representation for the same semantics. We investigate the challenging problem of this task, i.e., learning a consistent representation between images for a clustering effect of the same semantic features. We propose a novel visual similarity learning paradigm, Geometric Visual Similarity Learning, which embeds the prior of topological invariance into the measurement of the inter-image similarity for consistent representation of semantic regions.
+                Human-centered (HC) artificial intelligence (AI) collaborates human doctors and AI systems, that keeps human decision power (responsible) and improves their decision outcome, demonstrating great potential in medical visual assistance. During the interaction, it is able to assists the doctors to recognize the objects in medical images, thus enhancing their capabilities and empowering them achieve their clinical goals. Especially, with the development of foundation models, e.g., Segment Anything Models (SAM) and LLaVA , their emergence and homogenization capabilities enable the HCAI to be practiced in a wide range of medical scenarios through interaction. Therefore, it is poised to broadly reshape medical imaging and showing a promising future in energizing the capability of doctors. 
               </p>
           </div>
       </div>
@@ -131,16 +131,16 @@
               <p class="text-justify">
                   <ul>
                       <li>
-                          Advance the learning of inter-image similarity in 3D medical image self-supervised pre-training and push the representability of same visual semantics between images.
+                        It provides an AI-driven human-AI collaboration that empower doctors' medical ability without interference with their clinical workflow.
                       </li>
                       <li>
-                          A powerful and novel pretext learning paradigm, Geometric Visual Similarity Learning, is proposed to embeds the prior of topological invariance into the measurement for reliable learning.
+                        We propose a novel gaze-prompted segment anything model, GAZER, for model-active interaction.
                       </li>
                       <li>
-                          A reliable and novel projection head, Z-Matching head, is proposed for simultaneously powerful global and local representation in learning geometric matching-based pre-training.
+                        A plug-and-play gaze point filter (GPF) module that stimulates the gaze-prompt-based emergence ability of the foundation models without any additional training.
                       </li>
                       <li>
-                          Experiments demonstrates our learning of inter-image similarity yields more powerful inner-scene, inter-scene, and global-local transferring ability on four challenging 3D medical image tasks.
+                        We present a gaze prompt learning (GPL) that learns to cognize the gaze maps and understand the human intentions in our GAZER, thus assisting medical visual practices in professional scenarios.
                       </li>
                   </ul>
               </p>
@@ -151,16 +151,22 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <h3>
-                  <strong>Why learning inter-image similarity is crucial for 3D medical image SSP?</strong>
+                  <strong>GAZER is flexibly and seamlessly applied in a variety of clinical scenarios</strong>
               </h3>
               <div class="wrap">
                   <img src="./index_files/images/sen_page-0001.jpg" class="img-responsive" alt="overview">
                   <div class="txt">
                       <li>
-                      Same category 3D medical images share numerous same semantic regions due to the consistent human anatomies and the complete spatial information in 3D vision, having large inter-image similarity.
+                      Assist doctors in positioning and prompt doctors with relevant information during ultrasound scanning.
                       </li>
                       <li>
-                      Natural images have large semantic difference between images whose inter-image similarity is weak.
+                      The lesion was located during the interventional procedure.
+                      </li>
+                      <li>
+                      Observation inexperienced doctors gaze at the area for medical education.
+                      </li>
+                      <li>
+                      Assist doctors in the location and diagnosis of multiple objects in the image.
                       </li>
                   </div>
               </div>
@@ -207,18 +213,18 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <h3>
-                  <strong>The framework of our GVSL</strong>
+                  <strong>The framework of our GAZER</strong>
               </h3>
               <img src="./index_files/images/framework_page-0001.jpg" class="img-responsive" alt="overview">
               <p class="text-justify">
                   <li>
-                      Our GVSL learns the GM from the representation of the semantics in images, thus driving the learning of inter-image similarity via the gradient in backpropagation.
+                    <strong >GAZER</strong>  embeds the gaze as the prompt into the SAM \cite{kirillov2023segment} architecture, for interactive semantic regions extraction on medical images according to the gaze. It has two modes (GAZER-GPF and GAZER-GPL) for the superiority of both universality and professionality.
                   </li>
                   <li>
-                      Our Z-Matching head learns affine and deformable matchings simultaneously for powerful global and local representations.
+                    <strong >GAZER-GPF</strong>  module encodes the gaze points into the model inference process, so that it is able to embed the gaze into the point prompt encoder of SAM framework without any additional training.
                   </li>
                   <li>
-                      For efficient learning, it also takes a fundamental pretext task, the self-restoration, for a basic representation of semantics, thus giving a warm-up for GM learning.
+                    <strong >GAZER-GPL</strong>  trains a gaze map prompt encoder in the SAM's segmentation learning to understanding human intentions from their gaze maps, achieving reliable segmentation in professional medical scenarios.
                   </li>
               </p>
           </div>
@@ -227,11 +233,13 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <h3>
-                  <strong>Intuitions on GVSL’s behavior</strong>
+                  <strong>GAZER-GPL is able to understand the distinction between different gaze maps</strong>
               </h3>
               <div class="wrap">
                   <div class="txtleft">
-                      The prior of topological invariance in GM embeds a topology manifold into the metric, thus bringing an efficient measurement for inter-image similarity and guiding the clustering effect of the same semantic features.
+                    GAZER-GPL is able to better understand and distinguish different gaze maps as prompt. 
+                    We obtain the prompt embeddings from different models prompt encoder, then  dimensionality reduction was applied via t-SNE and visualization display. With fine-tune on GAZER, we found that GAZER-GPL could still effectively distinguish between
+                    various objects.
                   </div>
                   <img src="./index_files/images/feature_page-0001.jpg" class="img-responsive" alt="overview">
               </div>
